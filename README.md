@@ -39,4 +39,10 @@ Project of CS 598 Deep Learning for Healthcare. To reproduce the paper *On the D
    clinica -v convert adni-to-bids MRI_IMAGE_DIR CLINICAL_DATA_DIR CONVERTED_OUTPUT_DIR -m T1
    ```
 5. Preprocess data
+6. Split data
+
+## Model training
+
+## Model evaluation
+
 
