@@ -154,6 +154,32 @@ def generate_split_all():
     generate_split_tsv(INPUT_PATH1, ALL_META_PATH)
 
 
+def sample_tsv(n):
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Train_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.7))
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Train_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Train_diagnosis_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.7))
+    df['age_rounded'] = (df['age_rounded'] * 2).round() / 2
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Train_diagnosis_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Val_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.15))
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Val_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Val_diagnosis_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.15))
+    df['age_rounded'] = (df['age_rounded'] * 2).round() / 2
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Val_diagnosis_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Test_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.15))
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Test_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Test_diagnosis_ADNI.tsv"), sep='\t')
+    df = df.head(int(n * 0.15))
+    df['age_rounded'] = (df['age_rounded'] * 2).round() / 2
+    df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Test_diagnosis_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+
+
 def image_count_by_group():
     # Image count
     df1 = get_participants_meta(ALL_META_PATH)
@@ -162,11 +188,13 @@ def image_count_by_group():
     label_count = df_merged1.groupby(["diagnosis_sc"])["image_count"].sum()
     print(label_count)
 
-image_count_by_group()
+# image_count_by_group()
 # Output
 # AD      897
 # CN     1112
 # MCI    1074
+
+sample_tsv(200)
 
 # df_ic = image_cnt_per_subject(INPUT_PATH1)
 # # print(df_ic)
