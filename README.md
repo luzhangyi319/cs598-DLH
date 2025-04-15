@@ -42,22 +42,22 @@ Project of CS 598 Deep Learning for Healthcare. To reproduce the paper *On the D
 
 
 4. Convert downloaded data
-   Use the following command lines to convert the downloaded image data into BIDS format.
+   * Use the following command lines to convert the downloaded image data into BIDS format. Find more details on how to run clinica [convert](https://aramislab.paris.inria.fr/clinica/docs/public/dev/Converters/ADNI2BIDS/)
    ```
    conda activate clinicaEnv
    clinica -v convert adni-to-bids MRI_IMAGE_DIR CLINICAL_DATA_DIR CONVERTED_OUTPUT_DIR -m T1
    ```
 5. Preprocess data
-   Use the converted BIDS data in the previous step and the scripts to generate TSV files for train/Test/Val dataset.
+   * Use the converted BIDS data from the previous step and the function generate_split_all in script (preprocess/scripts/adni_meta_parse.py
+) to generate TSV files for train/test/val dataset. Then use the following command lines to generate the train/test/val datasets. Find more details on how to run clinica [t1-volume](https://aramislab.paris.inria.fr/clinica/docs/public/dev/Pipelines/T1_Volume/)
    ```
    conda activate clinicaEnv
-   export SPM_HOME="/Users/zhangyi/Documents/spm"
+   export SPM_HOME="SPM_INSTALLED_PATH"
    export PATH=/Applications/MATLAB_R2019a.app/bin:$PATH
-   clinica run t1-volume ./ADNI_converted_2010_2012 ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Train_ADNI.tsv -wd './WD_train' -np 1
-   clinica run t1-volume-existing-template ./ADNI_converted_2010_2012 ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Val_ADNI.tsv -wd './WD_val' -np 1
-   clinica run t1-volume-existing-template ./ADNI_converted_2010_2012 ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Test_ADNI.tsv -wd './WD_Test' -np 1
+   clinica run t1-volume CONVERTED_OUTPUT_DIR ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Train_ADNI.tsv -wd './WD_train' -np 1
+   clinica run t1-volume-existing-template CONVERTED_OUTPUT_DIR ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Val_ADNI.tsv -wd './WD_val' -np 1
+   clinica run t1-volume-existing-template CONVERTED_OUTPUT_DIR ./ADNI_processed TRAIN -tsv ./ADNI_converted_meta_all/sample_30/Test_ADNI.tsv -wd './WD_Test' -np 1
    ```
-6. Split data
 
 ## Model training
 
