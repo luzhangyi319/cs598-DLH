@@ -1,0 +1,6 @@
+participant_id	session_id	diagnosis	mmse	cdr	cdr_sb	age	examination_date	earliest_time	age_rounded
+sub-ADNI067S1185	ses-M006	AD	20.0	3.0	4.0	62.5	2007-03-01	2007-03-01	62.5
+sub-ADNI137S4587	ses-M003	CN	29.0			65.95	2007-03-01	2007-03-01	66.0
+sub-ADNI027S0408	ses-M036	MCI	24.0	3.0	3.0	85.2	2007-03-01	2007-03-01	85.0
+sub-ADNI114S0374	ses-M024	AD	26.0	3.0	3.0	77.9	2007-03-01	2007-03-01	77.5
+sub-ADNI127S0260	ses-M060	CN	30.0	3.0	3.0	83.6	2007-03-01	2007-03-01	83.5
