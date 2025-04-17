@@ -180,6 +180,16 @@ def sample_tsv(n):
     df.to_csv(os.path.join(ALL_META_PATH, f"sample_{n}/Test_diagnosis_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
 
 
+def new_test_sample(n):
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Test_ADNI.tsv"), sep='\t')
+    df = df.iloc[140:140+n]
+    df.to_csv(os.path.join(ALL_META_PATH, f"test_{n}/Test_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+    df = pd.read_csv(os.path.join(ALL_META_PATH, "Test_diagnosis_ADNI.tsv"), sep='\t')
+    df = df.iloc[140:140+n]
+    df['age_rounded'] = (df['age_rounded'] * 2).round() / 2
+    df.to_csv(os.path.join(ALL_META_PATH, f"test_{n}/Test_diagnosis_ADNI.tsv"), sep='\t', index=False, quoting=csv.QUOTE_NONE)
+
+
 def image_count_by_group():
     # Image count
     df1 = get_participants_meta(ALL_META_PATH)
@@ -194,8 +204,8 @@ def image_count_by_group():
 # CN     1112
 # MCI    1074
 
-sample_tsv(200)
-
+# sample_tsv(200)
+new_test_sample(200)
 # df_ic = image_cnt_per_subject(INPUT_PATH1)
 # # print(df_ic)
 # df1 = get_participants_meta(INPUT_PATH1)
