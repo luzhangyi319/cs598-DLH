@@ -60,7 +60,11 @@ Project of CS 598 Deep Learning for Healthcare. To reproduce the paper *On the D
    ```
 
 ## Model training
-
+1. Open [cs598_DL4H.ipynb](https://github.com/luzhangyi319/cs598-DLH/blob/main/cs598_DL4H.ipynb) in Colab.
+2. Locate the section **Model Training** in the notebook.
+3. Follow the steps to train the models using various config files.
 ## Model evaluation
-
+1. Open [cs598_DL4H.ipynb](https://github.com/luzhangyi319/cs598-DLH/blob/main/cs598_DL4H.ipynb) in Colab.
+2. Locate the section **Model Evaluation** in the notebook.
+3. Follow the steps to evaluate the models using various config files and test dataset.
 
