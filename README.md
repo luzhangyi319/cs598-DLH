@@ -1,5 +1,7 @@
 # cs598-DLH
-Project of CS 598 Deep Learning for Healthcare. To reproduce the paper *On the Design of Convolutional Neural Networks for Automatic Detection of Alzheimer's Disease*.
+This project reproduces the paper:
+**On the Design of Convolutional Neural Networks for Automatic Detection of Alzheimer’s Disease**
+[Link](https://proceedings.mlr.press/v116/liu20a.html) to original paper.
 
 ## Data preparation
 1. Register ADNI dataset
@@ -17,6 +19,11 @@ Project of CS 598 Deep Learning for Healthcare. To reproduce the paper *On the D
       numpy
       visdom
      ```
+     * Install the necessary Python packages:
+
+    ```
+    pip install -r requirements.txt
+    ```
    * Install miniconda, clinic, and dcm2niix
      ```
      curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh -o /tmp/miniconda-installer.sh
