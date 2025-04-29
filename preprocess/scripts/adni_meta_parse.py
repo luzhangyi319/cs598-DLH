@@ -198,6 +198,17 @@ def image_count_by_group():
     label_count = df_merged1.groupby(["diagnosis_sc"])["image_count"].sum()
     print(label_count)
 
+
+def dataset_stat(mode):
+    df = pd.read_csv(os.path.join(ALL_META_PATH, f"{mode}_diagnosis_ADNI.tsv"), sep='\t')
+    aggr_df = df.groupby(["diagnosis"]).agg({
+        'participant_id': ['nunique', 'count'],
+        'age': ['mean', 'std']}
+        )
+    print(aggr_df)
+
+dataset_stat("Val")
+
 # image_count_by_group()
 # Output
 # AD      897
@@ -205,7 +216,8 @@ def image_count_by_group():
 # MCI    1074
 
 # sample_tsv(200)
-new_test_sample(200)
+# new_test_sample(200)
+
 # df_ic = image_cnt_per_subject(INPUT_PATH1)
 # # print(df_ic)
 # df1 = get_participants_meta(INPUT_PATH1)
